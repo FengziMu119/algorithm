@@ -12,14 +12,17 @@ type SliceStack struct {
 	stackSize int
 }
 
+// 栈是否为空
 func (s *SliceStack) IsEmpty() bool {
 	return s.stackSize == 0
 }
 
+// 栈大小
 func (s *SliceStack) Size() int {
 	return s.stackSize
 }
 
+// 栈顶
 func (s *SliceStack) Top() int {
 	if s.IsEmpty() {
 		panic(errors.New("栈已经为空！"))
@@ -27,6 +30,7 @@ func (s *SliceStack) Top() int {
 	return s.arr[s.stackSize-1]
 }
 
+// 弹出栈顶
 func (s *SliceStack) Pop() int {
 	if s.stackSize > 0 {
 		s.stackSize--
@@ -37,6 +41,7 @@ func (s *SliceStack) Pop() int {
 	panic(errors.New("栈已经为空！"))
 }
 
+// 添加元素
 func (s *SliceStack) Push(t int) {
 	s.arr = append(s.arr, t)
 	s.stackSize++
@@ -66,10 +71,12 @@ type LinkedStack struct {
 	head *go_type.LNode
 }
 
+// 栈是否为空
 func (l *LinkedStack) IsEmptyL() bool {
 	return l.head.Next == nil
 }
 
+// 栈大小
 func (l *LinkedStack) SizeL() int {
 	size := 0
 	node := l.head.Next
@@ -80,6 +87,7 @@ func (l *LinkedStack) SizeL() int {
 	return size
 }
 
+// 添加元素
 func (l *LinkedStack) PushL(e int) {
 	node := &go_type.LNode{
 		Data: e,
@@ -88,6 +96,7 @@ func (l *LinkedStack) PushL(e int) {
 	l.head.Next = node
 }
 
+// 弹出栈顶
 func (l *LinkedStack) PopL() int {
 	tmp := l.head.Next
 	if tmp != nil {
@@ -97,6 +106,7 @@ func (l *LinkedStack) PopL() int {
 	panic(errors.New("栈已经为空！"))
 }
 
+// 栈顶
 func (l *LinkedStack) TopL() int {
 	if l.head.Next != nil {
 		return l.head.Next.Data.(int)
