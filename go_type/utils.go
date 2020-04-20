@@ -1,8 +1,26 @@
 package go_type
 
-import "fmt"
+import (
+	"fmt"
+	"math/rand"
+	"time"
+)
 
 //定义用于演示算法时的一些公共方法
+
+// 创建重复链表
+func CreateNodeT() (l *LNode) {
+	l = &LNode{}
+	cur := l
+	rand.Seed(time.Now().Unix())
+	for i := 1; i < 7; i++ {
+		cur.Next = &LNode{}
+		cur.Next.Data = rand.Intn(7)
+		cur = cur.Next
+	}
+	return
+
+}
 
 //创建链表
 func CreateNode(node *LNode, max int) {

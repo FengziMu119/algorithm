@@ -2,6 +2,7 @@ package main
 
 import (
 	. "algorithm/go_type"
+	"fmt"
 )
 
 /*
@@ -58,5 +59,10 @@ func RemoveDupRecursion(head *LNode) {
 	head.Next = RemoveDupRecursionChild(head.Next)
 }
 func main() {
-
+	head := &LNode{}
+	fmt.Println("删除重复结点")
+	head = CreateNodeT()
+	PrintNode("删除重复结点前：", head)
+	RemoveDupRecursion(head)
+	PrintNode("删除重复结点后：", head)
 }
